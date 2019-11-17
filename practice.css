@@ -1,0 +1,37 @@
+body {
+  background-color: #ecf0f1;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  padding-right: 1px;
+  padding-bottom: 1px;
+  justify-content: center;
+  margin: 0 auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-clicked {
+  background-color: white;
+  color: black;
+}
+
+.button {
+  cursor: pointer;
+}
+
+h1 {
+  color: #34495e;
+  transition: color 0.5s ease-in-out;
+}
+
+.clicked {
+  color: #7f8c8d;
+}
