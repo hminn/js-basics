@@ -1,5 +1,20 @@
 const API_KEY = "9b93bb93e46d7e12f2285b35595b9a0d";
 const COORDS = "coords";
+const weather = document.querySelector(".js-weather");
+
+function getWeather(lat, lng) {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=metric`
+  )
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(json) {
+      const temperature = json.main.temp;
+      const place = json.name;
+      weather.innerText = `기온: ${temperature}˚C \n 현재 위치: ${place}`;
+    });
+}
 
 function saveCoords(coordsObj) {
   localStorage.setItem(COORDS, JSON.stringify(coordsObj));
@@ -10,10 +25,11 @@ function handleGeoSuccess(position) {
   const longitude = position.coords.longitude;
   const coordsObj = {
     // 객체의 key의 이름을 같게 저장할 때는 latitude : latitude 대신에 latitude를 써도 된다.
-    latitude: latitude,
-    longitude: longitude
+    latitude,
+    longitude
   };
   saveCoords(coordsObj);
+  getWeather(latitude, longitude);
 }
 
 function handleGeoError() {
@@ -29,7 +45,8 @@ function loadCoords() {
   if (loadedCoords === null) {
     askForCoords();
   } else {
-    // get Weather
+    const parsedCoords = JSON.parse(loadedCoords);
+    getWeather(parsedCoords.latitude, parsedCoords.longitude);
   }
 }
 function init() {
