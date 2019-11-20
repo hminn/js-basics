@@ -1,5 +1,6 @@
 .form,
-.greetings {
+.greetings,
+.redo {
   display: none;
 }
 
@@ -7,7 +8,12 @@
   display: block;
   font-size: 48px;
   margin: 0px;
+}
+
+.showing-redo {
+  display: block;
   margin-bottom: 50px;
+  cursor: pointer;
 }
 
 .form input {
