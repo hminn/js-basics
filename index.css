@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR|PT+Sans:400,700&display=swap");
 @import "bg.css";
 @import "todo.css";
+@import "greeting.css";
 
 body {
   font-family: "PT Sans", "Noto Sans KR";
@@ -12,18 +13,6 @@ body {
   align-items: center;
   background-color: #353b48;
   color: white;
-}
-
-.form,
-.greetings {
-  display: none;
-}
-
-.showing {
-  display: block;
-  font-size: 48px;
-  margin: 0px;
-  margin-bottom: 50px;
 }
 
 .js-clock {

@@ -1,0 +1,49 @@
+.form,
+.greetings {
+  display: none;
+}
+
+.showing {
+  display: block;
+  font-size: 48px;
+  margin: 0px;
+  margin-bottom: 50px;
+}
+
+.form input {
+  width: 200px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  border: 1px solid white;
+  font-size: 20px;
+  float: left;
+  color: white;
+  text-align: center;
+  animation: floating 3s ease-in-out infinite;
+}
+
+.form input::placeholder {
+  color: white;
+}
+
+.form input:focus {
+  outline: none;
+  animation: none;
+}
+
+.form input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+@keyframes floating {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
