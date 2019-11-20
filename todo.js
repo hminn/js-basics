@@ -3,8 +3,31 @@ const toDoForm = document.querySelector(".js-toDoForm"),
   toDoList = document.querySelector(".js-toDoList");
 
 const TODOS_LS = "toDos";
+const ORIGIN_ICON = "far fa-square";
+const NEW_ICON = "far fa-check-square";
 
 let toDos = [];
+
+function createTextLine(icon) {
+  const span = icon.nextElementSibling;
+  span.style.textDecoration = "line-through";
+}
+
+function deleteTextLine(icon) {
+  const span = icon.nextElementSibling;
+  span.style.textDecoration = "";
+}
+
+function changeIcon(event) {
+  const icon = event.target;
+  if (icon.className === ORIGIN_ICON) {
+    icon.className = NEW_ICON;
+    createTextLine(icon);
+  } else {
+    icon.className = ORIGIN_ICON;
+    deleteTextLine(icon);
+  }
+}
 
 function deleteToDo(event) {
   const btn = event.target;
@@ -22,14 +45,19 @@ function saveToDos() {
 }
 
 function paintToDo(text) {
+  const icon = document.createElement("i");
   const li = document.createElement("li");
   const delBtn = document.createElement("button");
   const span = document.createElement("span");
   const newId = toDos.length + 1;
+
+  icon.classList = "far fa-square";
+  icon.addEventListener("click", changeIcon);
   delBtn.innerText = "❌";
   delBtn.addEventListener("click", deleteToDo);
   span.innerText = text;
 
+  li.appendChild(icon);
   li.appendChild(span);
   li.appendChild(delBtn);
   li.id = newId;

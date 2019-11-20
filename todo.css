@@ -1,0 +1,54 @@
+.js-toDoQuestion {
+  margin: 0px;
+  font-size: 30px;
+}
+
+ul.js-toDoList {
+  list-style: none;
+}
+
+ul i {
+  padding-top: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+ul li {
+  display: flex;
+  margin-top: 5px;
+  margin-left: -45px;
+  border-bottom: 0.5px solid white;
+  justify-content: space-between;
+}
+
+ul li button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  margin-left: 5px;
+  font-size: 10px;
+  color: black;
+  cursor: pointer;
+}
+
+.js-toDoForm {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.js-toDoForm input {
+  width: 200px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  border-bottom: 1px solid white;
+  font-size: 20px;
+  float: left;
+  color: white;
+  text-align: center;
+}
+
+.js-toDoForm input:focus {
+  outline: none;
+}

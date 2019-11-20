@@ -1,14 +1,11 @@
-.form,
-.greetings {
-  display: none;
-}
-
-.showing {
-  display: block;
-}
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR|PT+Sans:400,700&display=swap");
+@import "bg.css";
+@import "todo.css";
 
 body {
-  padding-top: 300px;
+  font-family: "PT Sans", "Noto Sans KR";
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,21 +14,22 @@ body {
   color: white;
 }
 
-.bgImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  animation: fadeIn 0.5s linear;
+.form,
+.greetings {
+  display: none;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.showing {
+  display: block;
+  font-size: 48px;
+  margin: 0px;
+  margin-bottom: 50px;
+}
+
+.js-clock {
+  height: 120px;
+  font-size: 48px;
+}
+.js-clock h1 {
+  margin: 0px;
 }
