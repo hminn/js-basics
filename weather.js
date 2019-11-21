@@ -12,7 +12,8 @@ function getWeather(lat, lng) {
     .then(function(json) {
       const temperature = json.main.temp;
       const place = json.name;
-      weather.innerText = `기온: ${temperature}˚C \n 현재 위치: ${place}`;
+      const humidity = json.main.humidity;
+      weather.innerText = `기온: ${temperature}˚C \n습도: ${humidity}% \n현재 위치: ${place}`;
     });
 }
 
