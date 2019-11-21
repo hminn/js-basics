@@ -10,6 +10,22 @@
     ></script>
   </head>
   <body>
+    <header class="top-bar">
+      <div class="js-weather weather">
+        <div class="weather__temp temp">
+          <i class="fas fa-cloud-sun"></i>
+          <span class="temp__text"></span>
+        </div>
+        <div class="weather__humidity humidity">
+          <i class="fas fa-tint"></i>
+          <span class="humidity__text"></span>
+        </div>
+        <div class="weather__place place">
+          <i class="fas fa-map-marker-alt"></i>
+          <span class="place__text"></span>
+        </div>
+      </div>
+    </header>
     <div class="js-clock">
       <h1>00:00</h1>
     </div>
@@ -26,7 +42,6 @@
       <input type="text" />
     </form>
     <ul class="js-toDoList"></ul>
-    <span class="js-weather"></span>
     <script src="clock.js"></script>
     <script src="greeting.js"></script>
     <script src="todo.js"></script>
