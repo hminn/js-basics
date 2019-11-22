@@ -12,7 +12,16 @@ function getWeather(lat, lng) {
     .then(function(json) {
       const temperature = json.main.temp;
       const place = json.name;
-      weather.innerText = `기온: ${temperature}˚C \n 현재 위치: ${place}`;
+      const humidity = json.main.humidity;
+      const weatherText = json.weather["0"].main;
+
+      const tempTag = document.querySelector(".temp__text");
+      const humidityTag = document.querySelector(".humidity__text");
+      const placeTag = document.querySelector(".place__text");
+
+      tempTag.innerText = `기온 : ${temperature}˚C (${weatherText})`;
+      humidityTag.innerText = `습도 : ${humidity}%`;
+      placeTag.innerText = `현재 위치 : ${place}`;
     });
 }
 

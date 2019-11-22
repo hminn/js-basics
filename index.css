@@ -3,10 +3,11 @@
 @import "bg.css";
 @import "todo.css";
 @import "greeting.css";
+@import "weather.css";
 
 body {
   font-family: "PT Sans", "Noto Sans KR";
-  padding-top: 100px;
+  /* padding-top: 100px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
