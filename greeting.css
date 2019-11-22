@@ -6,8 +6,9 @@
 
 .showing {
   display: block;
-  font-size: 48px;
+  font-size: 54px;
   margin: 0px;
+  margin-top: 20px;
 }
 
 .showing-redo {
