@@ -4,6 +4,7 @@
 @import "todo.css";
 @import "greeting.css";
 @import "weather.css";
+@import "git-icon.css";
 
 body {
   font-family: "PT Sans", "Noto Sans KR";

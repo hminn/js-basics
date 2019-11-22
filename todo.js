@@ -9,12 +9,12 @@ const NEW_ICON = "far fa-check-square";
 let toDos = [];
 
 function createTextLine(icon) {
-  const span = icon.nextElementSibling;
+  const span = icon.nextElementSibling.nextElementSibling;
   span.style.textDecoration = "line-through";
 }
 
 function deleteTextLine(icon) {
-  const span = icon.nextElementSibling;
+  const span = icon.nextElementSibling.nextElementSibling;
   span.style.textDecoration = "";
 }
 
@@ -51,8 +51,10 @@ function paintToDo(text) {
   const span = document.createElement("span");
   const newId = toDos.length + 1;
 
+  icon.title = "Done";
   icon.classList = "far fa-square";
   icon.addEventListener("click", changeIcon);
+  delBtn.title = "Delete";
   delBtn.innerText = "❌";
   delBtn.addEventListener("click", deleteToDo);
   span.innerText = text;
