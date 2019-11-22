@@ -1,6 +1,6 @@
 .js-toDoQuestion {
   margin: 0px;
-  font-size: 30px;
+  font-size: 48px;
 }
 
 ul.js-toDoList {
@@ -8,8 +8,9 @@ ul.js-toDoList {
 }
 
 ul i {
-  padding-top: 5px;
-  margin-right: 5px;
+  padding-top: 10px;
+  margin-right: 10px;
+  font-size: 24px;
   cursor: pointer;
 }
 
@@ -21,13 +22,19 @@ ul li {
   justify-content: space-between;
 }
 
+ul li span {
+  height: 30px;
+  padding-bottom: 10px;
+  font-size: 30px;
+}
+
 ul li button {
   background-color: rgba(0, 0, 0, 0);
   border: none;
   padding: 0px;
   margin: 0px;
   margin-left: 5px;
-  font-size: 10px;
+  font-size: 20px;
   color: black;
   cursor: pointer;
 }
@@ -38,12 +45,12 @@ ul li button {
 }
 
 .js-toDoForm input {
-  width: 200px;
+  width: 400px;
   height: 50px;
   background: rgba(0, 0, 0, 0);
   border: none;
   border-bottom: 1px solid white;
-  font-size: 20px;
+  font-size: 30px;
   float: left;
   color: white;
   text-align: center;

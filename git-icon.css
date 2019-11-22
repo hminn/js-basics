@@ -1,11 +1,10 @@
 .git {
-  width: 58px;
-  height: 20px;
+  height: 24px;
   background-color: rgba(0, 0, 0, 0);
   position: absolute;
   bottom: 0;
-  right: 0;
-  font-size: 14px;
+  right: 20px;
+  font-size: 18px;
 }
 
 a {
