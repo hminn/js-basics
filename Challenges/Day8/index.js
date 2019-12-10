@@ -19,43 +19,41 @@ function moveTask(event) {
   const btn = event.target;
   const li = btn.parentNode;
   if (li.parentNode.className === "js-pList") {
-    // pendingList.removeChild(li);
-    // const cleanTask = pending.filter(function(toDo) {
-    //   return toDo.id !== parseInt(li.id);
-    // });
-    // pending = cleanTask;
-    // savePending();
     deleteTask(event);
-
-    finishedList.appendChild(li);
-    const span = li.children[1];
-    const finishedObj = {
-      text: span.textContent,
-      id: finished.length + 1
-    };
-    finished.push(finishedObj);
-    savefinished();
+    paintFinished(li);
   } else {
+    deleteTask(event);
+    paintPending(li);
   }
-  console.log(li);
-  console.dir(li);
 }
 
 function deleteTask(event) {
-  const btn = event.target;
-  const li = btn.parentNode;
-  pendingList.removeChild(li);
-  const cleanTask = pending.filter(function(toDo) {
-    return toDo.id !== parseInt(li.id);
-  });
-  pending = cleanTask;
-  savePending();
+  where = event.target.parentNode.parentNode.className;
+  if (where === "js-pList") {
+    const btn = event.target;
+    const li = btn.parentNode;
+    pendingList.removeChild(li);
+    const cleanTask = pending.filter(function(toDo) {
+      return toDo.id !== li.id;
+    });
+    pending = cleanTask;
+    savePending();
+  } else {
+    const btn = event.target;
+    const li = btn.parentNode;
+    finishedList.removeChild(li);
+    const cleanTask = finished.filter(function(toDo) {
+      return toDo.id !== li.id;
+    });
+    finished = cleanTask;
+    saveFinished();
+  }
 }
 
 function savePending() {
   localStorage.setItem(PENDING_LS, JSON.stringify(pending));
 }
-function savefinished() {
+function saveFinished() {
   localStorage.setItem(FINISHED_LS, JSON.stringify(finished));
 }
 
@@ -66,7 +64,6 @@ function paintTask(text, where) {
   const moveBtn = document.createElement("button");
   const span = document.createElement("span");
 
-  icon.classList = UNDO_ICON;
   delBtn.innerText = "❌";
   delBtn.addEventListener("click", deleteTask);
   moveBtn.innerText = "✅";
@@ -79,25 +76,36 @@ function paintTask(text, where) {
   li.appendChild(moveBtn);
 
   if (where === "pending") {
-    li.id = pending.length + 1;
-    pendingList.appendChild(li);
-
-    const pendingObj = {
-      text: text,
-      id: li.id
-    };
-    pending.push(pendingObj);
-    savePending();
+    paintPending(li);
   } else {
-    finishedList.appendChild(li);
-    li.id = finished.length + 1;
-    const finishedObj = {
-      text: text,
-      id: finished.length + 1
-    };
-    finished.push(finishedObj);
-    savefinished();
+    paintFinished(li);
   }
+}
+
+function paintPending(li) {
+  li.children[0].className = UNDO_ICON;
+  pendingList.appendChild(li);
+  li.id = pending.length + 1;
+  text = li.children[1].textContent;
+  const pendingObj = {
+    text: text,
+    id: li.id
+  };
+  pending.push(pendingObj);
+  savePending();
+}
+
+function paintFinished(li) {
+  li.children[0].className = DONE_ICON;
+  finishedList.appendChild(li);
+  li.id = finished.length + 1;
+  text = li.children[1].textContent;
+  const finishedObj = {
+    text: text,
+    id: li.id
+  };
+  finished.push(finishedObj);
+  saveFinished();
 }
 
 function handleSubmit(event) {
@@ -122,7 +130,7 @@ function loadFinished() {
   if (loadedTask !== null) {
     const parsedTasks = JSON.parse(loadedTask);
     parsedTasks.forEach(function(task) {
-      paintTask(task.text, "");
+      paintTask(task.text, "", null);
     });
   }
 }
