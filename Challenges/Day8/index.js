@@ -1,5 +1,5 @@
 // <⚠️ DONT DELETE THIS ⚠️>
-// import "styles.css";
+// import "./styles.css";
 // <⚠️ /DONT DELETE THIS ⚠️>
 
 const pendingList = document.querySelector(".js-pList"),
@@ -17,7 +17,7 @@ let finished = [];
 
 function moveTask(event) {
   const btn = event.target;
-  const li = btn.parentNode;
+  const li = btn.parentNode.parentNode;
   if (li.parentNode.className === "js-pList") {
     deleteTask(event);
     paintFinished(li);
@@ -28,10 +28,10 @@ function moveTask(event) {
 }
 
 function deleteTask(event) {
-  where = event.target.parentNode.parentNode.className;
+  const where = event.target.parentNode.parentNode.parentNode.className;
   if (where === "js-pList") {
     const btn = event.target;
-    const li = btn.parentNode;
+    const li = btn.parentNode.parentNode;
     pendingList.removeChild(li);
     const cleanTask = pending.filter(function(toDo) {
       return toDo.id !== li.id;
@@ -40,7 +40,7 @@ function deleteTask(event) {
     savePending();
   } else {
     const btn = event.target;
-    const li = btn.parentNode;
+    const li = btn.parentNode.parentNode;
     finishedList.removeChild(li);
     const cleanTask = finished.filter(function(toDo) {
       return toDo.id !== li.id;
@@ -60,20 +60,24 @@ function saveFinished() {
 function paintTask(text, where) {
   const icon = document.createElement("i");
   const li = document.createElement("li");
+  const div = document.createElement("div");
   const delBtn = document.createElement("button");
   const moveBtn = document.createElement("button");
   const span = document.createElement("span");
 
   delBtn.innerText = "❌";
   delBtn.addEventListener("click", deleteTask);
-  moveBtn.innerText = "✅";
+  moveBtn.innerText = "✔";
   moveBtn.addEventListener("click", moveTask);
   span.innerText = text;
 
+  div.appendChild(delBtn);
+  div.appendChild(moveBtn);
+
   li.appendChild(icon);
   li.appendChild(span);
-  li.appendChild(delBtn);
-  li.appendChild(moveBtn);
+  li.appendChild(div);
+  console.log(li);
 
   if (where === "pending") {
     paintPending(li);
@@ -86,7 +90,7 @@ function paintPending(li) {
   li.children[0].className = UNDO_ICON;
   pendingList.appendChild(li);
   li.id = pending.length + 1;
-  text = li.children[1].textContent;
+  const text = li.children[1].textContent;
   const pendingObj = {
     text: text,
     id: li.id
@@ -99,7 +103,7 @@ function paintFinished(li) {
   li.children[0].className = DONE_ICON;
   finishedList.appendChild(li);
   li.id = finished.length + 1;
-  text = li.children[1].textContent;
+  const text = li.children[1].textContent;
   const finishedObj = {
     text: text,
     id: li.id
