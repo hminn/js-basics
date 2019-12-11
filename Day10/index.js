@@ -1,4 +1,3 @@
-const body = document.querySelector("body");
 const inputSubmit = document.querySelector(".input-submit");
 const inputNumber = document.querySelector(".input-number");
 const outputNumber = document.querySelector(".output-num");
@@ -27,9 +26,9 @@ function showingGame() {
 function showingResult(you, machine) {
   const resultSpan = document.querySelector(".result-box span");
   if (you !== machine) {
-    resultSpan.innerText = "You lost!";
+    resultSpan.innerText = "😫 You lost! 😫";
   } else {
-    resultSpan.innerText = "You won!";
+    resultSpan.innerText = "🥰 You won! 🥰";
   }
 }
 
