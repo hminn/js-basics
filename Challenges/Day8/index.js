@@ -67,7 +67,6 @@ function paintTask(text, where) {
 
   delBtn.innerText = "❌";
   delBtn.addEventListener("click", deleteTask);
-  moveBtn.innerText = "✔";
   moveBtn.addEventListener("click", moveTask);
   span.innerText = text;
 
@@ -87,6 +86,7 @@ function paintTask(text, where) {
 }
 
 function paintPending(li) {
+  li.children[2].children[1].innerText = "✔";
   li.children[0].className = UNDO_ICON;
   pendingList.appendChild(li);
   li.id = pending.length + 1;
@@ -100,6 +100,7 @@ function paintPending(li) {
 }
 
 function paintFinished(li) {
+  li.children[2].children[1].innerText = "🔄";
   li.children[0].className = DONE_ICON;
   finishedList.appendChild(li);
   li.id = finished.length + 1;
