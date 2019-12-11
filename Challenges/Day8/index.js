@@ -18,7 +18,8 @@ let finished = [];
 function moveTask(event) {
   const btn = event.target;
   const li = btn.parentNode.parentNode;
-  if (li.parentNode.className === "js-pList") {
+  const ulClassName = li.parentNode.className;
+  if (ulClassName === "js-pList") {
     deleteTask(event);
     paintFinished(li);
   } else {
@@ -27,25 +28,32 @@ function moveTask(event) {
   }
 }
 
+function removePending(li) {
+  pendingList.removeChild(li);
+  const cleanTask = pending.filter(function(toDo) {
+    return toDo.id !== li.id;
+  });
+  pending = cleanTask;
+}
+
+function removeFinished(li) {
+  finishedList.removeChild(li);
+  const cleanTask = finished.filter(function(toDo) {
+    return toDo.id !== li.id;
+  });
+  finished = cleanTask;
+}
+
 function deleteTask(event) {
   const where = event.target.parentNode.parentNode.parentNode.className;
+  const btn = event.target;
+  const li = btn.parentNode.parentNode;
+
   if (where === "js-pList") {
-    const btn = event.target;
-    const li = btn.parentNode.parentNode;
-    pendingList.removeChild(li);
-    const cleanTask = pending.filter(function(toDo) {
-      return toDo.id !== li.id;
-    });
-    pending = cleanTask;
+    removePending(li);
     savePending();
   } else {
-    const btn = event.target;
-    const li = btn.parentNode.parentNode;
-    finishedList.removeChild(li);
-    const cleanTask = finished.filter(function(toDo) {
-      return toDo.id !== li.id;
-    });
-    finished = cleanTask;
+    removeFinished(li);
     saveFinished();
   }
 }
