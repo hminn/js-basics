@@ -1,10 +1,12 @@
 const inputSubmit = document.querySelector(".input-submit");
 const inputNumber = document.querySelector(".input-number");
 const outputNumber = document.querySelector(".output-num");
+const inputRange = document.querySelector(".input-range");
 
-function writingNumber(num) {
-  outputNumber.innerText = num.value;
-  limitNumber(num.value);
+function writingNumber(event) {
+  const target = event.target;
+  outputNumber.innerText = target.value;
+  limitNumber(target.value);
 }
 
 function limitNumber(num) {
@@ -33,6 +35,7 @@ function showingResult(you, machine) {
 }
 
 function init() {
+  inputRange.addEventListener("input", writingNumber);
   inputSubmit.addEventListener("click", showingGame);
 }
 
