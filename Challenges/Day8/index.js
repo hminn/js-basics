@@ -19,6 +19,7 @@ function moveTask(event) {
   const btn = event.target;
   const li = btn.parentNode.parentNode;
   const ulClassName = li.parentNode.className;
+
   if (ulClassName === "js-pList") {
     deleteTask(event);
     paintFinished(li);
