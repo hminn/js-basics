@@ -1,0 +1,71 @@
+.grid {
+  background-color: black;
+  display: grid;
+  grid-gap: 8px;
+  width: 425px;
+  grid-template-columns: 100px 100px 100px 100px;
+  grid-template-rows: 50px 50px 50px 50px 50px;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.grid div {
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.number0,
+.number1,
+.number2,
+.number3,
+.number4,
+.number5,
+.number6,
+.number7,
+.number8,
+.number9,
+.equal {
+  background-color: #363439;
+}
+
+.plus,
+.minus,
+.product,
+.divide {
+  background-color: #fe8e23;
+}
+
+.clear {
+  background-color: #a7aab1;
+}
+
+.window {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.number0 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.click {
+  animation: click_effect 0.05s linear;
+}
+
+@keyframes click_effect {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
